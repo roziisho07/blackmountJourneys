@@ -1,34 +1,51 @@
-import Link from "next/link";
+"use client";
 
-export function Header() {
+import Link from "next/link";
+// import DropdownMenu from "./Dropdown";
+
+export default function Header() {
   return (
-    <div className="from-pink-50 to-white bg-gradient-to-b p-6">
-      <header className="bg-white/80 shadow-md flex items-center justify-between p-6 rounded-lg container mx-auto shadow-pink-50">
-        <Link
-          className="text-pink-700 md:text-xl font-bold tracking-tight"
-          href="/"
-        >
-          Layer Caker
+    <header className="sticky top-0 left-0 w-full flex items-center justify-between px-4 py-3 bg-opacity-100 bg-cyan-950 backdrop-blur-md z-10">
+      {/* Logo */}
+      <h1 className="text-2xl font-bold text-white px-2">Blackmount</h1>
+
+      {/* Navigation */}
+      <nav className="hidden md:flex flex-1 justify-center items-center space-x-4 lg:space-x-8 ">
+        <Link href="/" className="text-white hover:text-[#7bbcb0]">
+          Home
         </Link>
-        <ul className="flex items-center gap-4 font-semibold text-slate-700">
-          <li>
-            <Link
-              className="hover:text-pink-500 transition-colors"
-              href="/posts"
-            >
-              Posts
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="hover:text-pink-500 transition-colors"
-              href="/studio"
-            >
-              Sanity Studio
-            </Link>
-          </li>
-        </ul>
-      </header>
-    </div>
+        <a href="#" className="text-white hover:text-[#7bbcb0]">
+          About
+        </a>
+        <a href="#" className="text-white hover:text-[#7bbcb0]">
+          Packages
+        </a>
+        <a href="#" className="text-white hover:text-[#7bbcb0]">
+          Hotels
+        </a>
+        <a href="#" className="text-white hover:text-[#7bbcb0]">
+          Vehicles
+        </a>
+        <a href="/posts" className="text-white hover:text-[#7bbcb0]">
+          Blogs
+        </a>
+        <a href="#" className="text-white hover:text-[#7bbcb0]">
+          Help
+        </a>
+      </nav>
+
+      {/* Mobile Dropdown Menu */}
+      <div className="md:hidden">{/* <DropdownMenu /> */}</div>
+
+      {/* Contact Button */}
+      <div className="hidden md:flex items-center">
+        <Link
+          href="/"
+          className="px-6 py-2 bg-[#62968d] hover:bg-[#253835] text-white rounded-3xl"
+        >
+          Contact
+        </Link>
+      </div>
+    </header>
   );
 }

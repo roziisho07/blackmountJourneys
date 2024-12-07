@@ -47,3 +47,38 @@ export const POST_QUERY =
     image
   }
 }`);
+
+export const TOURS_QUERY =
+  defineQuery(`*[_type == "tour" && defined(slug.current)] | order(_createdAt desc)[0...12] {
+  _id,
+  title,
+  slug,
+  subdescription,
+  mainImage,
+  duration,
+  price,
+  reviews,
+  Subheading,
+  body,
+  featured, 
+}
+`);
+
+export const TOURS_SLUGS_QUERY =
+  defineQuery(`*[_type == "tour" && defined(slug.current)]{ 
+  "slug": slug.current
+}`);
+
+export const TOUR_QUERY =
+  defineQuery(`*[_type == "tour" && slug.current == $slug][0]{
+  _id,
+  title,
+  subdescription,
+  mainImage,
+  duration,
+  price,
+  reviews,
+  Subheading,
+  body,
+}
+`);
