@@ -14,24 +14,24 @@ export default function Header() {
         <Link href="/" className="text-white hover:text-[#7bbcb0]">
           Home
         </Link>
-        <a href="#" className="text-white hover:text-[#7bbcb0]">
+        <Link href="#" className="text-white hover:text-[#7bbcb0]">
           About
-        </a>
-        <a href="#" className="text-white hover:text-[#7bbcb0]">
+        </Link>
+        <Link href="#" className="text-white hover:text-[#7bbcb0]">
           Packages
-        </a>
-        <a href="#" className="text-white hover:text-[#7bbcb0]">
+        </Link>
+        <Link href="#" className="text-white hover:text-[#7bbcb0]">
           Hotels
-        </a>
-        <a href="#" className="text-white hover:text-[#7bbcb0]">
+        </Link>
+        <Link href="#" className="text-white hover:text-[#7bbcb0]">
           Vehicles
-        </a>
-        <a href="/posts" className="text-white hover:text-[#7bbcb0]">
+        </Link>
+        <Link href="/posts" className="text-white hover:text-[#7bbcb0]">
           Blogs
-        </a>
-        <a href="#" className="text-white hover:text-[#7bbcb0]">
+        </Link>
+        <Link href="#" className="text-white hover:text-[#7bbcb0]">
           Help
-        </a>
+        </Link>
       </nav>
 
       {/* Mobile Dropdown Menu */}
