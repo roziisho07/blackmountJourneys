@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { Title } from "@/components/Title";
 
 export default async function Page() {
   return (
     <section className="container mx-auto grid grid-cols-1 gap-6 p-12">
-      <h1 className="text-4xl font-bold">Home</h1>
+      <Title>Home Page</Title>
       <hr />
-      <div>Hello sanity</div>
-      <Link href="/posts">Posts index &rarr;</Link>
+      <Link href="/posts">Latest Blogs &rarr;</Link>
+      <Link href="/tours">Latest Tours &rarr;</Link>
     </section>
   );
 }
