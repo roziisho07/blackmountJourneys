@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Title } from "@/components/Title";
+// import { Title } from "@/components/Title";
 
 import bgimg from "./1701026673822 (1).jpg";
 
