@@ -68,6 +68,132 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Hotel = {
+  _id: string;
+  _type: "hotel";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  location_link?: string;
+  location?: string;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  slug?: Slug;
+  price?: string;
+  bed?: string;
+  room_size?: string;
+  room_standard?: string;
+  rating?: string;
+  amenity1?: string;
+  amenity2?: string;
+  amenity3?: string;
+  amenity4?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+};
+
+export type Vehicals = {
+  _id: string;
+  _type: "vehicals";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  slug?: Slug;
+  maxPeople?: string;
+  door?: string;
+  transmition?: string;
+  AirConditioned?: boolean;
+  VehicalType?: string;
+  driver?: string;
+  price?: number;
+  mileage?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  engine?: string;
+  condition?: string;
+  made_year?: string;
+};
+
 export type Tour = {
   _id: string;
   _type: "tour";
@@ -337,7 +463,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Tour | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Hotel | Vehicals | Tour | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -595,6 +721,192 @@ export type TOUR_QUERYResult = {
     _key: string;
   }> | null;
 } | null;
+// Variable: VEHICLES_QUERY
+// Query: *[_type == "vehicals" && defined(slug.current)] | order(_createdAt desc)[0...12] {  _id, title,    price,    mileage,    condition,    madeYear,    AirConditioned,    engine,    maxPeople,    mainImage,    slug,    }
+export type VEHICLES_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  price: number | null;
+  mileage: string | null;
+  condition: string | null;
+  madeYear: null;
+  AirConditioned: boolean | null;
+  engine: string | null;
+  maxPeople: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  slug: Slug | null;
+}>;
+// Variable: VEHICLE_QUERY
+// Query: *[_type == "vehicals" && defined(slug.current)] | order(_createdAt desc)[0] { _id,  title,  slug,  mainImage,  maxPeople,  door,  transmition,  AirConditioned,  VehicalType,  driver,  price,  mileage,  body,  engine,  condition,  made_year  }
+export type VEHICLE_QUERYResult = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  maxPeople: string | null;
+  door: string | null;
+  transmition: string | null;
+  AirConditioned: boolean | null;
+  VehicalType: string | null;
+  driver: string | null;
+  price: number | null;
+  mileage: string | null;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+  engine: string | null;
+  condition: string | null;
+  made_year: string | null;
+} | null;
+// Variable: VEHICLE_SLUGS_QUERY
+// Query: *[_type == "hotel" && defined(slug.current)]{   "slug": slug.current}
+export type VEHICLE_SLUGS_QUERYResult = Array<{
+  slug: string | null;
+}>;
+// Variable: HOTELS_QUERY
+// Query: *[_type == "hotel" && defined(slug.current)] | order(_createdAt desc) {  _id,  title,  slug,  mainImage, location_link, location,  bed,  room_size,  room_standard,  rating,  amenity1,  amenity2,  amenity3,  amenity4,  price,    }
+export type HOTELS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  location_link: string | null;
+  location: string | null;
+  bed: string | null;
+  room_size: string | null;
+  room_standard: string | null;
+  rating: string | null;
+  amenity1: string | null;
+  amenity2: string | null;
+  amenity3: string | null;
+  amenity4: string | null;
+  price: string | null;
+}>;
+// Variable: HOTEL_QUERY
+// Query: *[_type == "hotel" && defined(slug.current)] | order(_createdAt desc)[0] {                _id,                title,                slug,                mainImage,                location_link,                location,                bed,                room_size,                room_standard,                rating,                amenity1,                amenity2,                amenity3,                amenity4,                price,                body,                                }
+export type HOTEL_QUERYResult = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  location_link: string | null;
+  location: string | null;
+  bed: string | null;
+  room_size: string | null;
+  room_standard: string | null;
+  rating: string | null;
+  amenity1: string | null;
+  amenity2: string | null;
+  amenity3: string | null;
+  amenity4: string | null;
+  price: string | null;
+  body: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+} | null;
+// Variable: HOTEL_SLUGS_QUERY
+// Query: *[_type == "hotel" && defined(slug.current)]{   "slug": slug.current}
+export type HOTEL_SLUGS_QUERYResult = Array<{
+  slug: string | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -606,5 +918,10 @@ declare module "@sanity/client" {
     "*[_type == \"tour\" && defined(slug.current)] | order(_createdAt desc)[0...12] {\n  _id,\n  title,\n  slug,\n  subdescription,\n  mainImage,\n  duration,\n  price,\n  reviews,\n  Subheading,\n  body,\n  featured, \n}\n": TOURS_QUERYResult;
     "*[_type == \"tour\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": TOURS_SLUGS_QUERYResult;
     "*[_type == \"tour\" && slug.current == $slug][0]{\n  _id,\n  title,\n  subdescription,\n  mainImage,\n  duration,\n  price,\n  reviews,\n  Subheading,\n  body,\n}\n": TOUR_QUERYResult;
+    "*[_type == \"vehicals\" && defined(slug.current)] | order(_createdAt desc)[0...12] {\n  _id,\n title,\n    price,\n    mileage,\n    condition,\n    madeYear,\n    AirConditioned,\n    engine,\n    maxPeople,\n    mainImage,\n    slug,\n    \n}\n": VEHICLES_QUERYResult;
+    "*[_type == \"vehicals\" && defined(slug.current)] | order(_createdAt desc)[0] {\n _id,\n  title,\n  slug,\n  mainImage,\n  maxPeople,\n  door,\n  transmition,\n  AirConditioned,\n  VehicalType,\n  driver,\n  price,\n  mileage,\n  body,\n  engine,\n  condition,\n  made_year  \n}\n": VEHICLE_QUERYResult;
+    "*[_type == \"hotel\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": VEHICLE_SLUGS_QUERYResult | HOTEL_SLUGS_QUERYResult;
+    "*[_type == \"hotel\" && defined(slug.current)] | order(_createdAt desc) {\n  _id,\n  title,\n  slug,\n  mainImage,\n location_link,\n location,\n  bed,\n  room_size,\n  room_standard,\n  rating,\n  amenity1,\n  amenity2,\n  amenity3,\n  amenity4,\n  price,\n\n    \n}\n": HOTELS_QUERYResult;
+    "*[_type == \"hotel\" && defined(slug.current)] | order(_createdAt desc)[0] {\n                _id,\n                title,\n                slug,\n                mainImage,\n                location_link,\n                location,\n                bed,\n                room_size,\n                room_standard,\n                rating,\n                amenity1,\n                amenity2,\n                amenity3,\n                amenity4,\n                price,\n                body,\n                \n                }\n": HOTEL_QUERYResult;
   }
 }

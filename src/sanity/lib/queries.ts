@@ -82,3 +82,92 @@ export const TOUR_QUERY =
   body,
 }
 `);
+export const VEHICLES_QUERY =
+  defineQuery(`*[_type == "vehicals" && defined(slug.current)] | order(_createdAt desc)[0...12] {
+  _id,
+ title,
+    price,
+    mileage,
+    condition,
+    madeYear,
+    AirConditioned,
+    engine,
+    maxPeople,
+    mainImage,
+    slug,
+    
+}
+`);
+export const VEHICLE_QUERY =
+  defineQuery(`*[_type == "vehicals" && defined(slug.current)] | order(_createdAt desc)[0] {
+ _id,
+  title,
+  slug,
+  mainImage,
+  maxPeople,
+  door,
+  transmition,
+  AirConditioned,
+  VehicalType,
+  driver,
+  price,
+  mileage,
+  body,
+  engine,
+  condition,
+  made_year  
+}
+`);
+
+export const VEHICLE_SLUGS_QUERY =
+  defineQuery(`*[_type == "hotel" && defined(slug.current)]{ 
+  "slug": slug.current
+}`);
+
+export const HOTELS_QUERY =
+  defineQuery(`*[_type == "hotel" && defined(slug.current)] | order(_createdAt desc) {
+  _id,
+  title,
+  slug,
+  mainImage,
+ location_link,
+ location,
+  bed,
+  room_size,
+  room_standard,
+  rating,
+  amenity1,
+  amenity2,
+  amenity3,
+  amenity4,
+  price,
+
+    
+}
+`);
+export const HOTEL_QUERY =
+  defineQuery(`*[_type == "hotel" && defined(slug.current)] | order(_createdAt desc)[0] {
+                _id,
+                title,
+                slug,
+                mainImage,
+                location_link,
+                location,
+                bed,
+                room_size,
+                room_standard,
+                rating,
+                amenity1,
+                amenity2,
+                amenity3,
+                amenity4,
+                price,
+                body,
+                
+                }
+`);
+
+export const HOTEL_SLUGS_QUERY =
+  defineQuery(`*[_type == "hotel" && defined(slug.current)]{ 
+  "slug": slug.current
+}`);
