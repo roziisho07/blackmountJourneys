@@ -4,17 +4,23 @@ import Link from "next/link";
 import bgimg from "./1701026673822 (1).jpg";
 
 import { sanityFetch } from "@/sanity/lib/live";
-import { TOURS_QUERY, VEHICLES_QUERY } from "@/sanity/lib/queries";
+import {
+  HOTELS_QUERY,
+  TOURS_QUERY,
+  VEHICLES_QUERY,
+} from "@/sanity/lib/queries";
 // import { PostCard } from "@/components/PostCard";
 import Image from "next/image";
 import { TourCard } from "@/components/TourCard";
 import SearchBar from "@/components/SearchBar";
 import Hero from "@/components/Hero";
 import { VehicleCard } from "@/components/VehicleCard";
+import HotelCard from "@/components/HotelCard";
 
 export default async function Page() {
   const { data: tours } = await sanityFetch({ query: TOURS_QUERY });
   const { data: vehicle } = await sanityFetch({ query: VEHICLES_QUERY });
+  const { data: hotels } = await sanityFetch({ query: HOTELS_QUERY });
 
   return (
     <section className="">
@@ -89,28 +95,26 @@ export default async function Page() {
             {/* <featuredTours /> */}
 
             <div className="h-auto grid lg:grid-flow-col grid-flow-row lg:grid-cols-3 items-center justify-center mt-4   gap-4">
-              {vehicle
-                .filter(() => [0, ...[1]])
-                .map((vehicles) => (
-                  <VehicleCard
-                    _id={""}
-                    key={vehicles._id}
-                    title={vehicles.title}
-                    slug={vehicles.slug}
-                    price={vehicles.price}
-                    mileage={vehicles.mileage}
-                    condition={vehicles.condition}
-                    madeYear={vehicles.madeYear}
-                    AirConditioned={vehicles.AirConditioned}
-                    engine={vehicles.engine}
-                    maxPeople={vehicles.maxPeople}
-                    mainImage={vehicles.mainImage}
-                  />
-                ))}
+              {vehicle.slice(0, 3).map((vehicles) => (
+                <VehicleCard
+                  _id={""}
+                  key={vehicles._id}
+                  title={vehicles.title}
+                  slug={vehicles.slug}
+                  price={vehicles.price}
+                  mileage={vehicles.mileage}
+                  condition={vehicles.condition}
+                  madeYear={vehicles.madeYear}
+                  AirConditioned={vehicles.AirConditioned}
+                  engine={vehicles.engine}
+                  maxPeople={vehicles.maxPeople}
+                  mainImage={vehicles.mainImage}
+                />
+              ))}
             </div>
 
             <Link
-              href={"/tours"}
+              href={"/vehicles"}
               className="rounded-lg p-2 text-blue-500 font-semibold  hover:text-blue-800 hover:underline"
             >
               See All →
@@ -118,6 +122,46 @@ export default async function Page() {
           </div>
         </div>
       </section>
+      <section className="w-full flex items-center justify-center">
+        <div className="h-auto flex flex-col items-center justify-center mt-[8rem] max-w-[1000px] ">
+          <Hero />
+          {/* <Tours /> */}
+          <div className="overflow-scroll max-w-[1000px] flex flex-col items-center pb-8">
+            {/* <featuredTours /> */}
+
+            <div className="h-auto items-center justify-center mt-4   gap-4">
+              {hotels.slice(0, 3).map((hotel) => (
+                <HotelCard
+                  key={hotel._id}
+                  _id=""
+                  title={hotel.title}
+                  slug={hotel.slug}
+                  mainImage={hotel.mainImage}
+                  location_link={hotel.location_link}
+                  location={hotel.location}
+                  bed={hotel.bed}
+                  room_size={hotel.room_size}
+                  room_standard={hotel.room_standard}
+                  rating={hotel.rating}
+                  amenity1={hotel.amenity1}
+                  amenity2={hotel.amenity2}
+                  amenity3={hotel.amenity3}
+                  amenity4={hotel.amenity4}
+                  price={hotel.price}
+                />
+              ))}
+            </div>
+
+            <Link
+              href={"/hotels"}
+              className="rounded-lg p-2 text-blue-500 font-semibold  hover:text-blue-800 hover:underline"
+            >
+              See All →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/*  */}
     </section>
   );

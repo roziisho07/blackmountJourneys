@@ -26,7 +26,7 @@ export default function SearchBar() {
           />
         </div>
         <div className="flex mt-5">
-          <button className="block px-6 py-2 bg-[#62968d] hover:bg-[#] text-white rounded-2xl">
+          <button className="block px-6 py-2 bg-[#62968d] hover:bg-[#3a5a55] text-white rounded-2xl z-60 " >
             Search
           </button>
         </div>

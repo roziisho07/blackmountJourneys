@@ -36,9 +36,6 @@ export default async function Page() {
       </div>
 
       {/* All Hotels Section */}
-      <div className="flex lg:w-[1000px] w-[400px] mt-6">
-        <Title>All Hotels</Title>
-      </div>
     </main>
   );
 }

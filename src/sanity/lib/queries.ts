@@ -115,7 +115,7 @@ export const VEHICLE_QUERY =
   body,
   engine,
   condition,
-  made_year  
+  madeYear  
 }
 `);
 

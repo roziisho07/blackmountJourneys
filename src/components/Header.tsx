@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import DropdownMenu from "./Dropdown";
 // import DropdownMenu from "./Dropdown";
 
 export default function Header() {
@@ -35,7 +36,9 @@ export default function Header() {
       </nav>
 
       {/* Mobile Dropdown Menu */}
-      <div className="md:hidden">{/* <DropdownMenu /> */}</div>
+      <div className="md:hidden">
+        <DropdownMenu />
+      </div>
 
       {/* Contact Button */}
       <div className="hidden md:flex items-center">

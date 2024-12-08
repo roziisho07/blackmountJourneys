@@ -78,7 +78,7 @@ export const vehical = defineType({
       type: "string",
     }),
     defineField({
-      name: "made_year",
+      name: "madeYear",
       type: "string",
     }),
   ],

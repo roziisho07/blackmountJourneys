@@ -191,7 +191,7 @@ export type Vehicals = {
   }>;
   engine?: string;
   condition?: string;
-  made_year?: string;
+  madeYear?: string;
 };
 
 export type Tour = {
@@ -729,7 +729,7 @@ export type VEHICLES_QUERYResult = Array<{
   price: number | null;
   mileage: string | null;
   condition: string | null;
-  madeYear: null;
+  madeYear: string | null;
   AirConditioned: boolean | null;
   engine: string | null;
   maxPeople: string | null;
@@ -748,7 +748,7 @@ export type VEHICLES_QUERYResult = Array<{
   slug: Slug | null;
 }>;
 // Variable: VEHICLE_QUERY
-// Query: *[_type == "vehicals" && defined(slug.current)] | order(_createdAt desc)[0] { _id,  title,  slug,  mainImage,  maxPeople,  door,  transmition,  AirConditioned,  VehicalType,  driver,  price,  mileage,  body,  engine,  condition,  made_year  }
+// Query: *[_type == "vehicals" && defined(slug.current)] | order(_createdAt desc)[0] { _id,  title,  slug,  mainImage,  maxPeople,  door,  transmition,  AirConditioned,  VehicalType,  driver,  price,  mileage,  body,  engine,  condition,  madeYear  }
 export type VEHICLE_QUERYResult = {
   _id: string;
   title: string | null;
@@ -805,7 +805,7 @@ export type VEHICLE_QUERYResult = {
   }> | null;
   engine: string | null;
   condition: string | null;
-  made_year: string | null;
+  madeYear: string | null;
 } | null;
 // Variable: VEHICLE_SLUGS_QUERY
 // Query: *[_type == "hotel" && defined(slug.current)]{   "slug": slug.current}
@@ -919,7 +919,7 @@ declare module "@sanity/client" {
     "*[_type == \"tour\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": TOURS_SLUGS_QUERYResult;
     "*[_type == \"tour\" && slug.current == $slug][0]{\n  _id,\n  title,\n  subdescription,\n  mainImage,\n  duration,\n  price,\n  reviews,\n  Subheading,\n  body,\n}\n": TOUR_QUERYResult;
     "*[_type == \"vehicals\" && defined(slug.current)] | order(_createdAt desc)[0...12] {\n  _id,\n title,\n    price,\n    mileage,\n    condition,\n    madeYear,\n    AirConditioned,\n    engine,\n    maxPeople,\n    mainImage,\n    slug,\n    \n}\n": VEHICLES_QUERYResult;
-    "*[_type == \"vehicals\" && defined(slug.current)] | order(_createdAt desc)[0] {\n _id,\n  title,\n  slug,\n  mainImage,\n  maxPeople,\n  door,\n  transmition,\n  AirConditioned,\n  VehicalType,\n  driver,\n  price,\n  mileage,\n  body,\n  engine,\n  condition,\n  made_year  \n}\n": VEHICLE_QUERYResult;
+    "*[_type == \"vehicals\" && defined(slug.current)] | order(_createdAt desc)[0] {\n _id,\n  title,\n  slug,\n  mainImage,\n  maxPeople,\n  door,\n  transmition,\n  AirConditioned,\n  VehicalType,\n  driver,\n  price,\n  mileage,\n  body,\n  engine,\n  condition,\n  madeYear  \n}\n": VEHICLE_QUERYResult;
     "*[_type == \"hotel\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": VEHICLE_SLUGS_QUERYResult | HOTEL_SLUGS_QUERYResult;
     "*[_type == \"hotel\" && defined(slug.current)] | order(_createdAt desc) {\n  _id,\n  title,\n  slug,\n  mainImage,\n location_link,\n location,\n  bed,\n  room_size,\n  room_standard,\n  rating,\n  amenity1,\n  amenity2,\n  amenity3,\n  amenity4,\n  price,\n\n    \n}\n": HOTELS_QUERYResult;
     "*[_type == \"hotel\" && defined(slug.current)] | order(_createdAt desc)[0] {\n                _id,\n                title,\n                slug,\n                mainImage,\n                location_link,\n                location,\n                bed,\n                room_size,\n                room_standard,\n                rating,\n                amenity1,\n                amenity2,\n                amenity3,\n                amenity4,\n                price,\n                body,\n                \n                }\n": HOTEL_QUERYResult;

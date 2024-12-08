@@ -1208,7 +1208,7 @@
         },
         "optional": true
       },
-      "made_year": {
+      "madeYear": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
