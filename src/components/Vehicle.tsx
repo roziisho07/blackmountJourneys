@@ -23,7 +23,7 @@ export function Vehicle(props: NonNullable<VEHICLE_QUERYResult>) {
     body,
     engine,
     condition,
-    made_year,
+    madeYear,
   } = props;
   return (
     <div className="w-full flex items-center justify-center px-4 md:px-8 py-8">
@@ -34,7 +34,7 @@ export function Vehicle(props: NonNullable<VEHICLE_QUERYResult>) {
               {title}
             </h1>
             <p className="text-gray-600">
-              {`${VehicalType} | ${condition} | ${made_year}`}
+              {`${VehicalType} | ${condition} | ${madeYear}`}
             </p>
             <p className="text-gray-600">{`Transmission: ${transmition}`}</p>
             <p className="text-gray-600">{`Air Conditioned: ${AirConditioned ? "Yes" : "No"}`}</p>
