@@ -15,22 +15,22 @@ export default function Header() {
         <Link href="/" className="text-white hover:text-[#7bbcb0]">
           Home
         </Link>
-        <Link href="#" className="text-white hover:text-[#7bbcb0]">
+        <Link href="/about" className="text-white hover:text-[#7bbcb0]">
           About
         </Link>
-        <Link href="#" className="text-white hover:text-[#7bbcb0]">
+        <Link href="/tours" className="text-white hover:text-[#7bbcb0]">
           Packages
         </Link>
-        <Link href="#" className="text-white hover:text-[#7bbcb0]">
+        <Link href="/hotels" className="text-white hover:text-[#7bbcb0]">
           Hotels
         </Link>
-        <Link href="#" className="text-white hover:text-[#7bbcb0]">
+        <Link href="/vehicles" className="text-white hover:text-[#7bbcb0]">
           Vehicles
         </Link>
         <Link href="/posts" className="text-white hover:text-[#7bbcb0]">
           Blogs
         </Link>
-        <Link href="#" className="text-white hover:text-[#7bbcb0]">
+        <Link href="/help" className="text-white hover:text-[#7bbcb0]">
           Help
         </Link>
       </nav>
@@ -43,7 +43,7 @@ export default function Header() {
       {/* Contact Button */}
       <div className="hidden md:flex items-center">
         <Link
-          href="/"
+          href="/contact"
           className="px-6 py-2 bg-[#62968d] hover:bg-[#253835] text-white rounded-3xl"
         >
           Contact

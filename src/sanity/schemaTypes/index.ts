@@ -8,6 +8,7 @@ import { tourTypes } from "./tourTypes";
 import { vehical } from "./vehiclesTypes";
 import { authorType } from "./authorType";
 import { hotels } from "./hotelTypes";
+import { gallery} from "./galleryTypes";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     blockContentType,
@@ -17,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     tourTypes,
     vehical,
     hotels,
+    gallery,
   ],
 };

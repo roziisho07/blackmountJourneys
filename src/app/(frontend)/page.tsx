@@ -8,6 +8,7 @@ import {
   HOTELS_QUERY,
   TOURS_QUERY,
   VEHICLES_QUERY,
+  GALLERY_QUERY,
 } from "@/sanity/lib/queries";
 // import { PostCard } from "@/components/PostCard";
 import Image from "next/image";
@@ -16,12 +17,16 @@ import SearchBar from "@/components/SearchBar";
 import Hero from "@/components/Hero";
 import { VehicleCard } from "@/components/VehicleCard";
 import HotelCard from "@/components/HotelCard";
+import { GalleryHome } from "@/components/GalleryHome";
+import { GALLERY_QUERYResult } from "@/sanity/types";
 
 export default async function Page() {
   const { data: tours } = await sanityFetch({ query: TOURS_QUERY });
   const { data: vehicle } = await sanityFetch({ query: VEHICLES_QUERY });
   const { data: hotels } = await sanityFetch({ query: HOTELS_QUERY });
-
+  const { data: gallery }: { data: GALLERY_QUERYResult } = await sanityFetch({
+    query: GALLERY_QUERY,
+  });
   return (
     <section className="">
       {/* <Title>Home Page</Title>
@@ -89,7 +94,17 @@ export default async function Page() {
       </section>
       <section className="w-full flex items-center justify-center">
         <div className="h-auto flex flex-col items-center justify-center mt-[8rem] max-w-[1000px] ">
-          <Hero />
+          {/* <Hero /> */}
+          <div className="flex flex-col w-full  justify-start  text-left text-gray-800  ">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              Our Latest Vehicles
+            </h1>
+            <p className="max-w-2xl text-lg md:text-xl mb-8">
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Sint quasi laborum nam corporis obcaecati enim modi hic.
+            </p>
+          </div>
           {/* <Tours /> */}
           <div className="overflow-scroll max-w-[1000px] flex flex-col items-center pb-8">
             {/* <featuredTours /> */}
@@ -122,9 +137,19 @@ export default async function Page() {
           </div>
         </div>
       </section>
-      <section className="w-full flex items-center justify-center">
+      <section className="w-full flex items-center justify-center bg-gray-100">
         <div className="h-auto flex flex-col items-center justify-center mt-[8rem] max-w-[1000px] ">
-          <Hero />
+          {/* <Hero /> */}
+          <div className="flex flex-col w-full  justify-start  text-left text-gray-800   ">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              Explore our Latest Tours
+            </h1>
+            <p className="max-w-2xl text-lg md:text-xl mb-8">
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Sint quasi laborum nam corporis obcaecati enim modi hic.
+            </p>
+          </div>
           {/* <Tours /> */}
           <div className="overflow-scroll max-w-[1000px] flex flex-col items-center pb-8">
             {/* <featuredTours /> */}
@@ -157,6 +182,31 @@ export default async function Page() {
               className="rounded-lg p-2 text-blue-500 font-semibold  hover:text-blue-800 hover:underline"
             >
               See All →
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="w-full flex items-center justify-center mb-10 ">
+        <div className="h-auto flex flex-col items-center justify-center mt-[8rem] max-w-[1000px] ">
+          <div>
+            {gallery ? (
+              <GalleryHome
+                _id={gallery._id} // Pass `_id`
+                slug={gallery.slug} // Pass `slug`
+                title={gallery.title}
+                subTitle={gallery.subTitle}
+                images={gallery.images}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="w-full mt-6">
+            <Link
+              href={"/gallery"}
+              className="font-serif px-4  py-2 bg-cyan-600 hover:border-cyan-600 active:border-cyan-600 text-white"
+            >
+              Visit Gallery
             </Link>
           </div>
         </div>

@@ -171,3 +171,25 @@ export const HOTEL_SLUGS_QUERY =
   defineQuery(`*[_type == "hotel" && defined(slug.current)]{ 
   "slug": slug.current
 }`);
+export const GALLERY_SLUGS_QUERY =
+  defineQuery(`*[_type == "gallery" && defined(slug.current)]{ 
+  "slug": slug.current
+}`);
+export const GALLERY_QUERY =
+  defineQuery(`*[_type == "gallery" && defined(slug.current)] | order(_createdAt desc)[0] {
+    _id,
+    title,
+    subTitle,
+    slug,
+   images        
+}
+`);
+export const GALLERYS_QUERY =
+  defineQuery(`*[_type == "gallery" && defined(slug.current)] | order(_createdAt desc) {
+    _id,
+    title,
+    subTitle,
+    slug,
+   images        
+}
+`);

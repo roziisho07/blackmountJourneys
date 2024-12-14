@@ -68,6 +68,30 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Gallery = {
+  _id: string;
+  _type: "gallery";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  subTitle?: string;
+  slug?: Slug;
+  images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+};
+
 export type Hotel = {
   _id: string;
   _type: "hotel";
@@ -463,7 +487,7 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Hotel | Vehicals | Tour | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Gallery | Hotel | Vehicals | Tour | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: POSTS_QUERY
@@ -907,6 +931,53 @@ export type HOTEL_QUERYResult = {
 export type HOTEL_SLUGS_QUERYResult = Array<{
   slug: string | null;
 }>;
+// Variable: GALLERY_SLUGS_QUERY
+// Query: *[_type == "gallery" && defined(slug.current)]{   "slug": slug.current}
+export type GALLERY_SLUGS_QUERYResult = Array<{
+  slug: string | null;
+}>;
+// Variable: GALLERY_QUERY
+// Query: *[_type == "gallery" && defined(slug.current)] | order(_createdAt desc)[0] {    _id,    title,    subTitle,    slug,   images        }
+export type GALLERY_QUERYResult = {
+  _id: string;
+  title: string | null;
+  subTitle: string | null;
+  slug: Slug | null;
+  images: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+} | null;
+// Variable: GALLERYS_QUERY
+// Query: *[_type == "gallery" && defined(slug.current)] | order(_createdAt desc) {    _id,    title,    subTitle,    slug,   images        }
+export type GALLERYS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  subTitle: string | null;
+  slug: Slug | null;
+  images: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }> | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -923,5 +994,8 @@ declare module "@sanity/client" {
     "*[_type == \"hotel\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": VEHICLE_SLUGS_QUERYResult | HOTEL_SLUGS_QUERYResult;
     "*[_type == \"hotel\" && defined(slug.current)] | order(_createdAt desc) {\n  _id,\n  title,\n  slug,\n  mainImage,\n location_link,\n location,\n  bed,\n  room_size,\n  room_standard,\n  rating,\n  amenity1,\n  amenity2,\n  amenity3,\n  amenity4,\n  price,\n\n    \n}\n": HOTELS_QUERYResult;
     "*[_type == \"hotel\" && defined(slug.current)] | order(_createdAt desc)[0] {\n                _id,\n                title,\n                slug,\n                mainImage,\n                location_link,\n                location,\n                bed,\n                room_size,\n                room_standard,\n                rating,\n                amenity1,\n                amenity2,\n                amenity3,\n                amenity4,\n                price,\n                body,\n                \n                }\n": HOTEL_QUERYResult;
+    "*[_type == \"gallery\" && defined(slug.current)]{ \n  \"slug\": slug.current\n}": GALLERY_SLUGS_QUERYResult;
+    "*[_type == \"gallery\" && defined(slug.current)] | order(_createdAt desc)[0] {\n    _id,\n    title,\n    subTitle,\n    slug,\n   images        \n}\n": GALLERY_QUERYResult;
+    "*[_type == \"gallery\" && defined(slug.current)] | order(_createdAt desc) {\n    _id,\n    title,\n    subTitle,\n    slug,\n   images        \n}\n": GALLERYS_QUERYResult;
   }
 }
